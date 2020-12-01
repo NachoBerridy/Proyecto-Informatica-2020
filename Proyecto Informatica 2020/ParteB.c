@@ -18,15 +18,24 @@ int main(int argc, char const *argv[])
     datos datAuxiliar;
 	char caracter;
     char temperaturas[8];
-    int i=0,j=0,cont=1,modas=0,h;
-	int min=0,mediana1,mediana2,moda1=1,modmax=0;
-    float media=0,mediana;
-    double CV=0;
+    int i,j,cont,modas,h;
+	int min,mediana1,mediana2,moda1,modmax;
+    float media,mediana;
+    double CV;
     int MODA[1000];
     for (i=0;i<1000;i++){
         MODA[i]=0;
     }
-	
+
+	i=0;
+    j=0;
+    cont=1;
+    modas=0;
+    min=0;
+    moda1=0;
+    modmax=0;
+    CV=0;
+    media=0;
 	archivo = fopen("fichero.txt","r");
     
     if (archivo == NULL){
@@ -87,8 +96,7 @@ int main(int argc, char const *argv[])
     }
 
     media=media/(float)(cont-1);
-    min=0;
-    printf("\n\n---------DATOS ORDENADOS DE MANERA ASCENDENTE------\n");
+    //printf("\n\n---------DATOS ORDENADOS DE MANERA ASCENDENTE------\n");
     for (i = 0; i < cont-1; i++){
         for (j = i+1; j < cont-1 ;j++){
             if(DATOS[i].Temperatura>DATOS[j].Temperatura){
@@ -99,9 +107,9 @@ int main(int argc, char const *argv[])
         } 
     }
 
-    for (i=0; i<cont-1;i++){
+    /*for (i=0; i<cont-1;i++){
         printf("%s %s %.2f %s\n",DATOS[i].Fecha,DATOS[i].Hora,DATOS[i].Temperatura,DATOS[i].Tendencia);
-    }
+    }*/
     if((cont)%2==0){
         mediana1=((cont-1)/2);
         mediana=DATOS[mediana1].Temperatura;
@@ -137,7 +145,7 @@ int main(int argc, char const *argv[])
     for (size_t i = 0; i < cont-1; i++){
         CV+=pow((DATOS[i].Temperatura-media),2);
     }
-    CV=(sqrt(CV/(cont-1)))/(double)media;
+        CV=(sqrt(CV/(cont-1)))/(double)media;
         printf("\n");
         printf("La media es: %.2f\n",media);
         printf("La mediana es: %.2f\n",mediana);
