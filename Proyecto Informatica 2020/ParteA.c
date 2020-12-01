@@ -84,7 +84,7 @@ int main(int argc, char const *argv[]) {
             Color (BLACK,WHITE);
             Fecha(i); //Imprime en pantalla la fecha y hora actual
             DATOS[i+1].Temperatura=Mtemperatura(DATOS[i].Temperatura); //Guardo en un vector los datos de temperatura
-            printf("Temperatura medida: %f\n",DATOS[i].Temperatura);
+            printf("Temperatura medida: %.2f\n",DATOS[i].Temperatura);
             if (N>=Eventos){ //Empiezo a calcular el promedio a partir de los Eventos minimos
                 tprom=0;
                 if (comparar==0){
