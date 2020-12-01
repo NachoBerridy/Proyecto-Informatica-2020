@@ -133,7 +133,7 @@ int main(int argc, char const *argv[])
             modas++;
         }
     }
-    printf("Hay %i modas\n",modas);
+    //printf("Hay %i modas\n",modas);
     for (size_t i = 0; i < cont-1; i++){
         CV+=pow((DATOS[i].Temperatura-media),2);
     }
